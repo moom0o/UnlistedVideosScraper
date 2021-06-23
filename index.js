@@ -9,7 +9,7 @@ setInterval(() => {
 }, 100)
 
 function run(count) {
-    var req = unirest('GET', `https://unlistedvideos.com/videosm.php?vnlt=${count}`)
+    const req = unirest('GET', `https://unlistedvideos.com/videosm.php?vnlt=${count}`)
         .headers({
             'Cookie': 'usprivacy=1---; cf_chl_rc_m=1; cf_chl_prog=a10; cf_clearance=xxx',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36'
