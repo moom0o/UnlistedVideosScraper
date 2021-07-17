@@ -1,9 +1,16 @@
 const unirest = require('unirest');
 const fs = require('fs')
 
-let start = 653501
+let start = 659981
+let end = 0 //653501
+fs.appendFile('links.txt', `======NEW======` + "\n", (err) => {
+    if (err) throw err;
+});
 
 setInterval(() => {
+    if(start - end <= 0){
+        return console.log("Finished scraping")
+    }
     run(start)
     start = start - 10
 }, 100)
@@ -11,8 +18,8 @@ setInterval(() => {
 function run(count) {
     const req = unirest('GET', `https://unlistedvideos.com/videosm.php?vnlt=${count}`)
         .headers({
-            'Cookie': 'usprivacy=1---; cf_chl_rc_m=1; cf_chl_prog=a10; cf_clearance=xxx',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36'
+            'Cookie': 'usprivacy=1---; cf_chl_prog=a10; cf_clearance=YOURCLOUDFLARECLEARENCEGOESHERE',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         })
         .end(function (res) {
             if (res.error) throw new Error(res.error);
